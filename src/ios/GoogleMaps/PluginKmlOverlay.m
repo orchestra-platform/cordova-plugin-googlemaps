@@ -64,7 +64,7 @@
           //------------------------------------------
           // WKWebView
           //------------------------------------------
-          NSURL *url = [webview URL];
+          url = [webview URL];
           currentURL = url.absoluteString;
           if (![[url lastPathComponent] isEqualToString:@"/"]) {
             currentURL = [currentURL stringByReplacingOccurrencesOfString:[url lastPathComponent] withString:@""];
