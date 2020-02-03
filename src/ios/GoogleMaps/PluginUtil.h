@@ -59,7 +59,9 @@ typedef void (^MYCompletionHandler)(NSError *error);
 //
 @interface MainViewController (CDVViewController)
 #if CORDOVA_VERSION_MIN_REQUIRED < __CORDOVA_4_0_0
-- (void)webViewDidFinishLoad:(UIWebView*)theWebView;
+    #if !WK_WEB_VIEW_ONLY
+        - (void)webViewDidFinishLoad:(UIWebView*)theWebView;
+    #endif
 #endif
 @end
 

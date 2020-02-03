@@ -87,11 +87,11 @@
           id webview = cdvViewController.webView;
           NSString *clsName = [webview className];
           NSURL *url;
-          if ([clsName isEqualToString:@"UIWebView"]) {
+          #if !WK_WEB_VIEW_ONLY
             url = ((UIWebView *)cdvViewController.webView).request.URL;
-          } else {
+          #else
             url = [webview URL];
-          }
+          #endif
           NSString *webPageUrl = url.absoluteString;
           [options setObject:webPageUrl forKey:@"webPageUrl"];
           [options setObject:self.mapCtrl.overlayId forKey:@"mapId"];

@@ -226,7 +226,7 @@
                   id webview = cdvViewController.webView;
                   NSString *clsName = [webview className];
                   NSURL *url;
-                  if ([clsName isEqualToString:@"UIWebView"]) {
+                  #if !WK_WEB_VIEW_ONLY
                     url = ((UIWebView *)cdvViewController.webView).request.URL;
                     NSString *currentURL = url.absoluteString;
                     currentURL = [currentURL stringByDeletingLastPathComponent];
@@ -234,7 +234,7 @@
                     currentURL = [currentURL stringByReplacingOccurrencesOfString:@"//" withString:@"/"];
                     currentURL = [currentURL stringByReplacingOccurrencesOfString:@"%20" withString:@" "];
                     urlStr = [NSString stringWithFormat:@"file://%@/%@", currentURL, urlStr];
-                  } else {
+                  #else
                     //------------------------------------------
                     // WKWebView URL is use http:// always
                     //------------------------------------------
@@ -274,7 +274,7 @@
                       }];
                     });
                     return;
-                  }
+                  #endif
                 } else {
                   urlStr = [NSString stringWithFormat:@"file://%@", urlStr];
                 }

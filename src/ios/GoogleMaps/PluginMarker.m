@@ -1002,7 +1002,8 @@
       id webview = cdvViewController.webView;
       NSString *clsName = [webview className];
       NSURL *url;
-      if ([clsName isEqualToString:@"UIWebView"]) {
+      #if !WK_WEB_VIEW_ONLY
+        
         url = ((UIWebView *)cdvViewController.webView).request.URL;
         NSString *currentURL = url.absoluteString;
 
@@ -1028,7 +1029,7 @@
         if (self.mapCtrl.debuggable) {
           NSLog(@"iconPath = %@", iconPath);
         }
-      } else {
+      #else
         //------------------------------------------
         // WKWebView
         //------------------------------------------
@@ -1150,7 +1151,8 @@
         }];
 
         return;
-      }
+      
+      #endif
     }
 
 

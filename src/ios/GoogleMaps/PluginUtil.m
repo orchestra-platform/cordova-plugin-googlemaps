@@ -152,12 +152,14 @@ static char CAAnimationGroupBlockKey;
 
 @implementation MainViewController (CDVViewController)
 #if CORDOVA_VERSION_MIN_REQUIRED < __CORDOVA_4_0_0
+#if !WK_WEB_VIEW_ONLY
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
   theWebView.backgroundColor = [UIColor clearColor];
   theWebView.opaque = NO;
   return [super webViewDidFinishLoad:theWebView];
 }
+#endif
 #endif
 @end
 @implementation PluginUtil
